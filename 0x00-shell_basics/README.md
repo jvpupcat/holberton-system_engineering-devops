@@ -1,5 +1,8 @@
 # Shell, basics
 
+
+<img src="http://www.hippoquotes.com/img/basic-quotes-tumblr/thumb.jpg">
+
 ## Description
 
 This repo has some of the most useful commands that are executable in shell.
