@@ -4,13 +4,14 @@
 COUNTER=1
 while [ $COUNTER -le 20 ];
 do
-	echo "$COUNTER"
 	if (( COUNTER == "4" )); then
 		echo "bad luck from China"
 	elif (( COUNTER == "9" )); then
 		echo "bad luck from Japan"
 	elif (( COUNTER == "17" )); then
 		echo "bad luck from Italy"
+	else
+		echo "$COUNTER"
 	fi
 	COUNTER=$(( COUNTER + 1 )) #increments counter
 done
