@@ -13,5 +13,5 @@ do
 	else
 		echo "$COUNTER"
 	fi
-	COUNTER=$(( COUNTER + 1 )) #increments counter
+	(( COUNTER++ )) #increments counter
 done
