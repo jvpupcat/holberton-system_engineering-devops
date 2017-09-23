@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Bash script that displays Holberton School 10 times
+
+COUNTER=1
+while [ $COUNTER -le 10 ];
+do
+	if (( COUNTER == "4" )); then
+		echo "bad luck"
+	elif (( COUNTER == "8" )); then
+		echo "good luck"
+	else
+		echo "Holberton School"
+	fi
+	COUNTER=$(( COUNTER + 1 )) #increments counter
+done
