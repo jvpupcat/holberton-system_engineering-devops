@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bash script that displays Holberton School 10 times
+# Bash script that displays bad luck number of 3 countries
 
 COUNTER=1
 while [ $COUNTER -le 20 ];
