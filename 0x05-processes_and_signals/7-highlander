@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script that displays To infinity and beyond w/ sleep2
+# And I am invincible!! when receiving SIGTERM signal
+
+trap signal 15
+
+signal()
+{
+	echo "I am invincible!!"
+}
+
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
