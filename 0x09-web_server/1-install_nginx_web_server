@@ -2,4 +2,7 @@
 # Bash script that configures a new Ubuntu machine to echo
 # "Holberton School for the win!"
 
+sudo apt-get install nginx
+sudo service nginx restart
 echo "Holberton School for the win!" | sudo tee /usr/share/nginx/html/index.html
+sudo service nginx restart
