@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script that redirects to another page
+
+sudo apt-get -y install nginx
+sudo service nginx restart
+sed -i "37i location /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=cfu_hJTQKtU;\n\t}" /etc/nginx/sites-available/default
+sudo service nginx restart
