@@ -1,0 +1,9 @@
+echo "hello world"
+pwd
+ls
+
+tail
+grep 'GET' access.log
+grep 500 * -lR
+ls | grep access.log
+cat **/access.log* | grep 500
