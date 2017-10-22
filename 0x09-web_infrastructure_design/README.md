@@ -1,6 +1,6 @@
 # 0x09 Web Infrastructure Design
 
-<img src="https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29#/media/File:LAMP_software_bundle.svg">
+<img src="https://www.programmableweb.com/sites/default/files/LAMP-stack.jpg">
 
 ## Overview
 
