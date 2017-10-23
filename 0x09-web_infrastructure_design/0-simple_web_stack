@@ -1,0 +1,11 @@
+# 0-Simple Web Stack
+
+My simple web stack consists of one server, one web server (NGINIX), one application server, one application files, one database (MySQL), and one domain name.
+
+When a request from a client comes in, Gandi, my current domain name server points to my website name, www.jvpupcat.space, to my unique IP address. The DNS will sent the request to my web server, NGINX, which is an HTTP server. HTTP is the name of the hypertext language that the server and client uses to communicate with one another. NGINX will be the web server that serves web content and goes through the HTTP and TCP/IP protocols to ensure that frames of packages are packaged and delivered to the right destination.
+
+Within my server are two other servers, the database server (MySQL) and an application server. The database server provides database services to other computer programs or to computers as defined by the client/server model. Database management systems rely exclusively on the client/server model for database access and provides services such as storage and data analysis.
+
+The application server is a software engine that delivers various applications, or programs, to another device. 
+
+A single point of failure (SPOF) in this model is the fact that I only have one server. Application and database compete for the same server resources such as CPU and memory. It will provide poor performance and can make it diffcult to determine the source of poor performance. If that server crashes, the client will not be able to communicate and receive the data it needs to load my webpage. Another point of failure is the fact that there is no load balancer, which is responsible for being able to monitor incoming traffic requests and balancing it. While some servers like Microsoft servers have load balancers included, I don't.
