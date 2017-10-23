@@ -1,0 +1,7 @@
+https://imgur.com/wGBwdli
+
+There are a total of 3 servers, server 1, server 2 and the load-balancer. Within the 2 servers are duplicates of the web server NGINX, application server with the application files, and a database server.
+
+This model utilizes the 
+
+The single point of failure is the lack of redundancy within this model.
