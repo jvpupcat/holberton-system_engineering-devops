@@ -10,10 +10,10 @@ if [ -z "$2" ]
         do
             dig "${s_dom}.$1" | awk -v s_dom="$s_dom" '/ANSWER SECTION:/ {
                                                        getline; print "The subdomain",
-                                                       s_dom,"is a",$4,
-                                                       "record and points to",$5}'
+                                                       s_dom,"is a",$(NF-1),
+                                                       "record and points to",$(NF)}'
         done
 else
     dig "$2.$1" | awk -v s_dom="$2" '/ANSWER SECTION:/ {getline; print "The subdomain",
-                                     s_dom,"is a",$4,"record and points to",$5}'
+                                     s_dom,"is a",$(NF-1),"record and points to",$NF}'
 fi
