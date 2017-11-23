@@ -4,7 +4,12 @@
 
 subdomains=(www lb-01 web-01 web-02)
 
-for s_dom in "${subdomains[@]}"
-do
-   dig "${s_dom}.$1" | awk -v s_dom="$s_dom" '/ANSWER SECTION:/ {getline; print "The subdomain",s_dom,"is a",$4,"record and points to",$5}'
-done
+if [ -z "$2" ]
+    then
+        for s_dom in "${subdomains[@]}"
+            do
+                dig "${s_dom}.$1" | awk -v s_dom="$s_dom" '/ANSWER SECTION:/ {getline; print "The subdomain",s_dom,"is a",$4,"record and points to",$5}'
+            done
+else
+    dig "${subdomains}.$1" | awk -v s_dom="$s_dom" '/ANSWER SECTION:/ {getline; print "The subdomain",s_dom,"is a",$4,"record and points to",$5}'
+fi
