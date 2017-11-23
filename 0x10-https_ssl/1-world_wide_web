@@ -5,5 +5,5 @@ subdomains=(www lb-01 web-01 web-02)
 
 for s_dom in "${subdomains[@]}"
 do
-   dig "${s_dom}.$1" | grep -A1 'ANSWER SECTION:' | awk '{print "The subdomain",${s_dom},"is a",$4,"record and points to",$5;}'
+   dig "${s_dom}.$1" | awk -v s_dom="$s_dom" '/ANSWER SECTION:/ {getline; print "The subdomain",s_dom,"is a",$4,"record and points to",$5}'
 done
