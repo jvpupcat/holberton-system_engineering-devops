@@ -1,7 +1,8 @@
 global
         log /dev/log   local0
         log 127.0.0.1   local1 notice
-        maxconn 4096
+        maxconn 2048
+	tune.ssl.default-dh-param 2048
         user haproxy
         group haproxy
         daemon
@@ -17,32 +18,35 @@ defaults
         contimeout     5000
         clitimeout     50000
         srvtimeout     50000
+	option forwardfor
+	option http-server-close
 
-listen webfarm 0.0.0.0:80
-    mode http
-    stats enable
-    stats uri /haproxy?stats
-    balance roundrobin
-    option httpclose
-    option forwardfor
-    bind 0.0.0.0:80
-    server webserver01 142.44.167.244:80 check
-    server webserver02 144.217.246.216:80 check
-listen appname
-        bind 0.0.0.0:80
-        mode http
-        stats enable
-        stats uri /haproxy?stats
-        balance roundrobin
-        option httpclose
-        option forwardfor
-        server 130-web-01 142.44.167.244:80 check
-        server 130-web-02 144.217.246.216:80 check
-listen appname
-        bind 0.0.0.0:80
-        mode http
-        stats enable
-        stats uri /haproxy?stats
-        balance roundrobin
-        option httpclose
-        option forwardfor
+frontend www-http
+	bind 144.217.246.138:80
+	reqadd X-Forwarded-Proto:\ http
+	default_backend www-backend
+
+frontend www-https
+	bind 144.217.246.138:443 ssl crt /etc/haproxy/certs/jvpupcat.space.pem
+   	reqadd X-Forwarded-Proto:\ https
+   	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+   	use_backend letsencrypt-backend if letsencrypt-acl
+   	default_backend www-backend
+
+backend www-backend
+   	redirect scheme https if !{ ssl_fc }
+   	server 130-web-01 142.44.167.244:80 check
+   	server 130-web-02 144.217.246.216:80 check
+   	balance roundrobin
+
+backend letsencrypt-backend
+   	server letsencrypt 127.0.0.1:54321
+
+#listen webfarm
+#    mode http
+#    balance roundrobin
+#    option httpclose
+#    option forwardfor
+#    bind *:80
+#    server webserver01 142.44.167.244:80 check
+#    server webserver02 144.217.246.216:80 check
