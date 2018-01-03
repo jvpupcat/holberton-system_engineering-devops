@@ -21,10 +21,11 @@ if __name__ == "__main__":
     tasks = 0
     tasks_done = []
     for status in todo_json:
-        tasks = 0
+        tasks = tasks + 1
         if status.get('completed') == True:
             done = done + 1
-            tasks_done = tasks_done + "\t {}\n".format(status.get('title'))
+            tasks_done.append(status.get('title'))
 
     print("Employee {} is done with tasks({}/{}):".format(name, done, tasks))
-    print(tasks, end="")
+    for completed in tasks_done:
+        print('\t' + completed)
