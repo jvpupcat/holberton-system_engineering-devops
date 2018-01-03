@@ -23,6 +23,14 @@ if __name__ == "__main__":
     #get employee todo list
     todo_request = requests.get(todo_url, params=todo_data)
     todo_json = todo_request.json()
+    done = 0
+    tasks = 0
+    tasks_done = []
+    for todo in todo_json:
+        tasks = tasks + 1
+        if todo.get('userId') == user_id:
+            done = done + 1
+            tasks_done.append(todo.get('title'), todo.get('completed'))
     csv_file = user_id + ".csv"
 
     #get tasks done and title of it
