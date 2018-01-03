@@ -6,9 +6,12 @@ import sys
 
 if __name__ == "__main__":
     user_id = sys.argv[1]
+
+    #setting variables with user and todo data and url
     user_data = {'id': sys.argv[1]}
-    todo_data = {'userId': sys.argv[1]}
     user_url = 'https://jsonplaceholder.typicode.com/users'
+
+    todo_data = {'userId': sys.argv[1]}
     todo_url = 'https://jsonplaceholder.typicode.com/todos'
 
     #user data request
@@ -26,6 +29,6 @@ if __name__ == "__main__":
     for key in todo_json:
         status = key.get('completed')
         title = key.get('title')
-        with open(csv_file, 'a+') as f:
+        with open(csv_file, 'a+') as f: #open file to read and append
             f.write('"{}","{}","{}","{}"\n'.format
-                    (user_id, username, status, title))
+                    (user_id, username, status, title)) #output format
