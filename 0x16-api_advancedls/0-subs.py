@@ -7,7 +7,7 @@ def number_of_subscribers(subreddit):
     """Queries number of subscribers for subreddit"""
     if type(subreddit) is not str:
         return 0
-    reddit_url = requests.get("https://www.reddit.com/dev/api/".format(subreddit), headers={'user-agent': 'jvpupcat'}, allow_redirects=False)
+    reddit_url = requests.get("https://www.reddit.com/r/{}/about".format(subreddit), headers={'user-agent': 'jvpupcat'}, allow_redirects=False)
     NumOfSubscribers = reddit_url.json().get('data').get('subscribers')
     if NumOfSubscribers is None:
         return 0
