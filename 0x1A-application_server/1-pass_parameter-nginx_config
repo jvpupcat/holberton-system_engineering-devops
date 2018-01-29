@@ -31,21 +31,7 @@ server {
                 proxy_pass http://127.0.0.1:8001/;
         }
 
-        location /airbnb-dynamic/(\d+)$ {
+        location /airbnb-dynamic/ {
                 include proxy_params;
-                proxy_pass http://127.0.0.1:8001/number_odd_or_even/;
-        }
-
-        location /redirect_me {
-                return 301 https://www.youtube.com/watch?v=cfu_hJTQKtU;
-        }
-
-        location /redirect_me {
-                return 301 https://www.youtube.com/watch?v=cfu_hJTQKtU;
-        }
-
-        error_page 404 /custom_404.html;
-        location = /custom_404.html {
-                root /usr/share/nginx/html;
-                internal;
+                proxy_pass http://127.0.0.1:8002/number_odd_or_even/;
         }
